@@ -1,13 +1,13 @@
 variable "project_name" {
-  
+
 }
 
 variable "environment" {
-  
+
 }
 
 variable "vpc_cidr" {
-  
+
 }
 
 variable "enable_dns_hostnames" {
@@ -16,7 +16,7 @@ variable "enable_dns_hostnames" {
 
 #optional
 variable "common_tags" {
-  type = map
+  type = map(any)
   #default = {}
 }
 
@@ -29,9 +29,9 @@ variable "igw_tags" {
 }
 
 variable "public_subnet_cidrs" {
-  type = list
+  type = list(any)
   validation {
-    condition = length(var.public_subnet_cidrs) == 2
+    condition     = length(var.public_subnet_cidrs) == 2
     error_message = "Please provide 2 vaild public subnet CIDR"
   }
 }
@@ -41,9 +41,9 @@ variable "public_subnet_tags" {
 }
 
 variable "private_subnet_cidrs" {
-  type = list
+  type = list(any)
   validation {
-    condition = length(var.private_subnet_cidrs) == 2
+    condition     = length(var.private_subnet_cidrs) == 2
     error_message = "Please provide 2 vaild private subnet CIDR"
   }
 }
@@ -53,9 +53,9 @@ variable "private_subnet_tags" {
 }
 
 variable "database_subnet_cidrs" {
-  type = list
+  type = list(any)
   validation {
-    condition = length(var.database_subnet_cidrs) == 2
+    condition     = length(var.database_subnet_cidrs) == 2
     error_message = "Please provide 2 vaild private subnet CIDR"
   }
 }
